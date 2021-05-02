@@ -30,6 +30,7 @@ def new_game() -> Engine:
     max_rooms = 30
 
     player = copy.deepcopy(entity_factories.player)
+    gunman = copy.deepcopy(entity_factories.gunman)
 
     engine = Engine(player=player)
 
@@ -48,8 +49,13 @@ def new_game() -> Engine:
     engine.message_log.add_message(
         "Help Strong Terry prove his strength and unite the Rickys and Terrys of the streets! "
         "Also see if you can find info about a strange new drug...", color.welcome_text
-
     )
+
+    gun = copy.deepcopy(entity_factories.gun)
+
+    gun.parent = gunman.inventory
+
+    gunman.inventory.append(gun)
 
     return engine
 
@@ -79,7 +85,7 @@ class MainMenu(input_handlers.BaseEventHandler):
         console.print(
             console.width // 2,
             console.height - 2,
-            "By Bpoxa",
+            "By Apoxa",
             fg=color.menu_title,
             alignment=tcod.CENTER,
         )

@@ -35,6 +35,16 @@ ricky = Actor(
     level=Level(xp_given=100),
 )
 
+gunman = Actor (
+    char="G",
+    color=(0, 127, 0),
+    name="Gunman",
+    ai_cls=HostileEnemy,
+    fighter=Fighter(hp=5, defense=0, power=1),
+    inventory=Inventory(capacity=3),
+    level=Level(xp_given=150),
+)
+
 confusion_scroll = Item(
     char="~",
     color=(207, 63, 255),
@@ -61,4 +71,8 @@ lightning_scroll = Item(
     color=(255, 255, 0),
     name="Exploding Drone",
     consumable=consumable.LightningDamageConsumable(damage=20, maximum_range=5),
+)
+
+gun = Item(
+    consumable=consumable.GunDamageConsumable(damage=2, maximum_range=5),
 )

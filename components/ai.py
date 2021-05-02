@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import random
+import entity_factories
 from typing import List, Optional, Tuple, TYPE_CHECKING
 
 import numpy as np  # type: ignore
@@ -63,6 +64,8 @@ class HostileEnemy(BaseAI):
                 return MeleeAction(self.entity, dx, dy).perform()
 
             self.path = self.get_path_to(target.x, target.y)
+        if entity_factories.gun >= 1:
+            item.consumable.get_action
 
         if self.path:
             dest_x, dest_y = self.path.pop(0)
